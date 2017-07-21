@@ -1,4 +1,4 @@
-package com.eficid.cordova.plugin;
+package com.pigwell.cordova.plugin;
 
 import android.app.Activity;
 import android.content.Intent;
