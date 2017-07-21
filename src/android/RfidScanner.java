@@ -51,7 +51,15 @@ public class RfidScanner extends CordovaPlugin {
                 // Intent calIntent = new Intent(Intent.ACTION_EDIT)
                 //         .putExtra("tfidid", epcStr);
                 // this.cordova.getActivity().startActivity(calIntent);
-                PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,  "123");  
+                JSONObject json = new JSONObject();
+                try{
+                    json.put("type", "1");
+                    json.put("signin", "2");
+                }catch(JSONException ex){
+                    Log.e(TAG, "signin succeeded exception: "+ex.getMessage());
+                    return;
+                }
+                PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,  json);  
                 mPlugin.setKeepCallback(true);  
                 callbackContext.sendPluginResult(mPlugin);  
                 callbackContext.success();
