@@ -24,6 +24,7 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/RfidScanner.java" target-dir="src/com/pigwell/cordova/plugin" />      
+        <source-file src="src/android/RfidScanner.java" target-dir="src/com/pigwell/cordova/plugin" />  
+        <source-file src="src/android/uhf.jar" target-dir="libs" />    
      </platform>          
 </plugin>

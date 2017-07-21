@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
+import com.android.hdhe.uhf.reader.Tools;
+import com.android.hdhe.uhf.reader.UhfReader;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
@@ -22,6 +25,9 @@ public class RfidScanner extends CordovaPlugin {
     private static final String RADAR_INTENT = "eficid.intent.action.RFID_RADAR";
     private static final String CANCELLED = "cancelled";
     private static final String LOG_TAG = "RfidScanner";
+    private UhfReader uhfReader;
+    private boolean startFlag = false;
+
 
     private CallbackContext callbackContext;
 
@@ -39,70 +45,23 @@ public class RfidScanner extends CordovaPlugin {
     }
 
     public void scan() {
-        Intent intentScan = new Intent();
-        intentScan.setAction(SCAN_INTENT);
-        this.cordova.startActivityForResult(this, intentScan, SCAN_CODE);
-    }
-
-    public void radar(JSONArray args) {
-        Intent intentScan = new Intent();
-        intentScan.setAction(RADAR_INTENT);
-        ArrayList<String> tagList = new ArrayList<String>();
-        tagList.clear();
-        try {
-            for (int i = 0; i < args.length(); i++) {
-                tagList.add(args.get(i).toString());
+        private List<byte[]> epcList;
+        startFlag = true;
+        uhfReader = UhfReader.getInstance();
+        epcList = uhfReader.inventoryRealTime(); //实时盘存
+        if (epcList != null && !epcList.isEmpty()) {
+            //扫描到后立即关闭连接,防止多次beep
+            runFlag = false;
+            if (uhfReader != null) {
+                uhfReader.close();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            for (byte[] epc : epcList) {
+                epcStr = Tools.Bytes2HexString(epc, epc.length);
+            }
+            Toast.makeText(cordova.getActivity(), "show..."+"方法结果"+epcStr, Toast.LENGTH_SHORT).show();
+            return ;
         }
-        intentScan.putStringArrayListExtra("EPC_LIST", tagList);
-        this.cordova.startActivityForResult(this, intentScan, RADAR_CODE);
-    }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-    	switch(requestCode) {
-       		case SCAN_CODE :
-	            if (resultCode == Activity.RESULT_OK) {
-	                JSONObject obj = new JSONObject();
-	                try {
-	                    ArrayList<String> result = intent.getStringArrayListExtra("RESULT");
-	                    JSONArray jsArray = new JSONArray(result);
-	                    obj.put(CANCELLED, false);
-	                    obj.put("tags", jsArray);
-	                } catch (JSONException e) {
-	                    Log.d(LOG_TAG, "This should never happen");
-	                }
-
-	                this.callbackContext.success(obj);
-	            } else if (resultCode == Activity.RESULT_CANCELED) {
-	                JSONObject obj = new JSONObject();
-	                try {
-	                    obj.put(CANCELLED, true);
-	                    obj.put("tags", "");
-	                } catch (JSONException e) {
-	                    Log.d(LOG_TAG, "This should never happen");
-	                }
-	                this.callbackContext.success(obj);
-	            } else {
-	                this.callbackContext.error("Unexpected error");
-	            }
-	            break;
-		    case RADAR_CODE :
-		    	if (resultCode == Activity.RESULT_CANCELED) {
-	                JSONObject obj = new JSONObject();
-	                try {
-	                    obj.put(CANCELLED, true);
-	                    obj.put("tags", "");
-	                } catch (JSONException e) {
-	                    Log.d(LOG_TAG, "This should never happen");
-	                }
-	                this.callbackContext.success(obj);
-	            } else {
-	                this.callbackContext.error("Unexpected error");
-	            }
-	            break;
-	    }
     }
+ 
 }
