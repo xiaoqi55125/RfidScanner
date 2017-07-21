@@ -37,31 +37,28 @@ public class RfidScanner extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.callbackContext = callbackContext;
         if (action.equals("scan")) {
-            scan();
+            startFlag = true;
+            uhfReader = UhfReader.getInstance();
+            epcList = uhfReader.inventoryRealTime(); //实时盘存
+            if (epcList != null && !epcList.isEmpty()) {
+                //扫描到后立即关闭连接,防止多次beep
+                if (uhfReader != null) {
+                    uhfReader.close();
+                }
+                for (byte[] epc : epcList) {
+                    epcStr = Tools.Bytes2HexString(epc, epc.length);
+                }
+                Intent calIntent = new Intent(Intent.ACTION_EDIT)
+                        .putExtra("tfidid", epcStr);
+                this.cordova.getActivity().startActivity(calIntent);
+                callbackContext.success();
+                return true;
+            }
         } else {
             return false;
         }
         return true;
     }
 
-    public void scan() {
-        
-        startFlag = true;
-        uhfReader = UhfReader.getInstance();
-        epcList = uhfReader.inventoryRealTime(); //实时盘存
-        if (epcList != null && !epcList.isEmpty()) {
-            //扫描到后立即关闭连接,防止多次beep
- 
-            if (uhfReader != null) {
-                uhfReader.close();
-            }
-            for (byte[] epc : epcList) {
-                epcStr = Tools.Bytes2HexString(epc, epc.length);
-            }
-            Toast.makeText(cordova.getActivity(), "show..."+"方法结果"+epcStr, Toast.LENGTH_SHORT).show();
-            return ;
-        }
-
-    }
  
 }
