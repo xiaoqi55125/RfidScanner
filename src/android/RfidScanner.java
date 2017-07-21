@@ -48,9 +48,13 @@ public class RfidScanner extends CordovaPlugin {
                 for (byte[] epc : epcList) {
                     epcStr = Tools.Bytes2HexString(epc, epc.length);
                 }
-                Intent calIntent = new Intent(Intent.ACTION_EDIT)
-                        .putExtra("tfidid", epcStr);
-                this.cordova.getActivity().startActivity(calIntent);
+                // Intent calIntent = new Intent(Intent.ACTION_EDIT)
+                //         .putExtra("tfidid", epcStr);
+                // this.cordova.getActivity().startActivity(calIntent);
+                PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,  
+                        '123123');  
+                mPlugin.setKeepCallback(true);  
+                callbackContext.sendPluginResult(mPlugin);  
                 callbackContext.success();
                 return true;
             }
