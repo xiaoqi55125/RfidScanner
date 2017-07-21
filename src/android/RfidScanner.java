@@ -57,7 +57,7 @@ public class RfidScanner extends CordovaPlugin {
                     json.put("type", "1");
                     json.put("signin", "2");
                 }catch(JSONException ex){
-                    return;
+                    return true;
                 }
                 PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,  json);  
                 mPlugin.setKeepCallback(true);  
