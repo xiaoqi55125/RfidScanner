@@ -51,8 +51,7 @@ public class RfidScanner extends CordovaPlugin {
                 // Intent calIntent = new Intent(Intent.ACTION_EDIT)
                 //         .putExtra("tfidid", epcStr);
                 // this.cordova.getActivity().startActivity(calIntent);
-                PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,  
-                        '123123');  
+                PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,  "123");  
                 mPlugin.setKeepCallback(true);  
                 callbackContext.sendPluginResult(mPlugin);  
                 callbackContext.success();
