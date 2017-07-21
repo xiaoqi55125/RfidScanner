@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.util.List;
 import android.widget.Toast;
 import java.util.ArrayList;
+import org.apache.cordova.api.PluginResult;
 
 /**
  * Created by avila on 28/10/13.
@@ -56,7 +57,6 @@ public class RfidScanner extends CordovaPlugin {
                     json.put("type", "1");
                     json.put("signin", "2");
                 }catch(JSONException ex){
-                    Log.e(TAG, "signin succeeded exception: "+ex.getMessage());
                     return;
                 }
                 PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,  json);  
