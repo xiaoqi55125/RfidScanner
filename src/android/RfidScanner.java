@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.List;
-
+import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
@@ -38,8 +38,6 @@ public class RfidScanner extends CordovaPlugin {
         this.callbackContext = callbackContext;
         if (action.equals("scan")) {
             scan();
-        } else if (action.equals("radar")) {
-            radar(args);
         } else {
             return false;
         }
@@ -53,7 +51,7 @@ public class RfidScanner extends CordovaPlugin {
         epcList = uhfReader.inventoryRealTime(); //实时盘存
         if (epcList != null && !epcList.isEmpty()) {
             //扫描到后立即关闭连接,防止多次beep
-            runFlag = false;
+ 
             if (uhfReader != null) {
                 uhfReader.close();
             }
