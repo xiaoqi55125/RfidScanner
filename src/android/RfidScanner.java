@@ -12,6 +12,7 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.List;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class RfidScanner extends CordovaPlugin {
     private static final String LOG_TAG = "RfidScanner";
     private UhfReader uhfReader;
     private boolean startFlag = false;
+    private List<byte[]> epcList;
 
 
     private CallbackContext callbackContext;
@@ -37,7 +39,7 @@ public class RfidScanner extends CordovaPlugin {
         if (action.equals("scan")) {
             scan();
         } else if (action.equals("radar")) {
-        	radar(args);
+            radar(args);
         } else {
             return false;
         }
@@ -45,7 +47,7 @@ public class RfidScanner extends CordovaPlugin {
     }
 
     public void scan() {
-        private List<byte[]> epcList;
+        
         startFlag = true;
         uhfReader = UhfReader.getInstance();
         epcList = uhfReader.inventoryRealTime(); //实时盘存
