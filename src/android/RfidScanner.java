@@ -29,7 +29,7 @@ public class RfidScanner extends CordovaPlugin {
     private UhfReader uhfReader;
     private boolean startFlag = false;
     private List<byte[]> epcList;
-
+    String epcStr = null;
 
     private CallbackContext callbackContext;
 
