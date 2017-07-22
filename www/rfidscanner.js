@@ -1,7 +1,7 @@
  
 module.exports = {
   // 画面からはこの関数名を使って呼び出し
-  scan: function(name, successCallback, errorCallback) {
+  scan: function(successCallback, errorCallback) {
     // 第1引数: 成功時に呼び出す関数
     // 第2引数: エラー時に呼び出す関数
     // 第3引数: プラグインの名前（plugin.xmlのfeatureのnameに設定したもの）

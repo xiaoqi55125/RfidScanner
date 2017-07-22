@@ -32,32 +32,30 @@ public class RfidScanner extends CordovaPlugin {
     private List<byte[]> epcList;
     String epcStr = null;
 
-    private CallbackContext callbackContext;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        this.callbackContext = callbackContext;
         if (action.equals("scan")) {
-            startFlag = true;
-            uhfReader = UhfReader.getInstance();
-            epcList = uhfReader.inventoryRealTime(); //实时盘存
-            if (epcList != null && !epcList.isEmpty()) {
-                //扫描到后立即关闭连接,防止多次beep
-                if (uhfReader != null) {
-                    uhfReader.close();
-                }
-                for (byte[] epc : epcList) {
-                    epcStr = Tools.Bytes2HexString(epc, epc.length);
-                }
-                // Intent calIntent = new Intent(Intent.ACTION_EDIT)
-                //         .putExtra("tfidid", epcStr);
-                // this.cordova.getActivity().startActivity(calIntent);
-                JSONObject json = new JSONObject();
-                try{
-                    json.put("type", "1");
-                    json.put("signin", "2");
-                }catch(JSONException ex){
-                }
+            // startFlag = true;
+            // uhfReader = UhfReader.getInstance();
+            // epcList = uhfReader.inventoryRealTime(); //实时盘存
+            // if (epcList != null && !epcList.isEmpty()) {
+            //     //扫描到后立即关闭连接,防止多次beep
+            //     if (uhfReader != null) {
+            //         uhfReader.close();
+            //     }
+            //     for (byte[] epc : epcList) {
+            //         epcStr = Tools.Bytes2HexString(epc, epc.length);
+            //     }
+            //     // Intent calIntent = new Intent(Intent.ACTION_EDIT)
+            //     //         .putExtra("tfidid", epcStr);
+            //     // this.cordova.getActivity().startActivity(calIntent);
+            //     JSONObject json = new JSONObject();
+            //     try{
+            //         json.put("type", "1");
+            //         json.put("signin", "2");
+            //     }catch(JSONException ex){
+            //     }
                 // PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,json);  
                 // mPlugin.setKeepCallback(true);  
                 // callbackContext.sendPluginResult(mPlugin);  
@@ -66,10 +64,8 @@ public class RfidScanner extends CordovaPlugin {
                 callbackContext.success(message);
 
                 return true;
-            }
-        } else {
-            return false;
-        }
+            // }
+        }  
         return true;
     }
 
