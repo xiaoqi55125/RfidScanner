@@ -62,7 +62,7 @@ public class RfidScanner extends CordovaPlugin {
             Runnable runnable = new Runnable() {
                 public void run() {
                     startFlag = true;
-                    uhfReader = UhfReader.getInstance();
+                    // uhfReader = UhfReader.getInstance();
                     // epcList = uhfReader.inventoryRealTime(); //实时盘存
                     // if (epcList != null && !epcList.isEmpty()) {
                     //     //扫描到后立即关闭连接,防止多次beep
