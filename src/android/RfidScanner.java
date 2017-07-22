@@ -81,7 +81,8 @@ public class RfidScanner extends CordovaPlugin {
                     // callbackContext.success(message);
                 }
             };
-            cordova.getActivity().runOnUiThread(runnable);
+            // cordova.getActivity().runOnUiThread(runnable);
+            cordova.getThreadPool().execute(runnable);
             return true;
         }
         return false;
