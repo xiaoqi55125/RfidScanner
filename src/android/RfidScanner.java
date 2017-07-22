@@ -58,10 +58,13 @@ public class RfidScanner extends CordovaPlugin {
                     json.put("signin", "2");
                 }catch(JSONException ex){
                 }
-                PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,json);  
-                mPlugin.setKeepCallback(true);  
-                callbackContext.sendPluginResult(mPlugin);  
-                callbackContext.success();
+                // PluginResult mPlugin = new PluginResult(PluginResult.Status.OK,json);  
+                // mPlugin.setKeepCallback(true);  
+                // callbackContext.sendPluginResult(mPlugin);  
+                // callbackContext.success();
+                String message = "Hello, ";
+                callbackContext.success(message);
+
                 return true;
             }
         } else {
