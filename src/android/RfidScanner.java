@@ -65,6 +65,10 @@ public class RfidScanner extends CordovaPlugin {
 
                 return true;
             // }
+        }else {
+            
+            return false;
+
         }  
          if (action.equals("greet")) {
 
