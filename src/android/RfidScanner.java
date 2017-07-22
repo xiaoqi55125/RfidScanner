@@ -75,7 +75,7 @@ public class RfidScanner extends CordovaPlugin {
                     //     // String message = "1111111112"+epcStr;
                     //     // callbackContext.success(message);
                     // }
-                    Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123"+uhfReader, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123"+startFlag, Toast.LENGTH_SHORT);
                     toast.show();
                     // String message = "1111111112";
                     // callbackContext.success(message);
