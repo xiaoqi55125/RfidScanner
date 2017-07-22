@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
            id="com.pigwell.cordova.plugin.rfidscanner"
       version="0.1.0">
-    <name>RfidPgPlugin</name>
+    <name>RfidScanner</name>
     <description>RfidScanner PhoneGap Plugin</description>
     <license>MIT</license>
     <keywords>phonegap,rfid,rfidscanner</keywords>
@@ -12,8 +12,8 @@
       <engine name="cordova" version=">=3.0.0" />
     </engines>    
     
-    <js-module src="www/rfidscanner.js" name="RfidScanner">
-        <clobbers target="window.rfidscanner" />
+    <js-module src="www/rfidscanner.js" name="rfidscanner">
+        <clobbers target="rfidscanner" />
     </js-module>
 
     <!-- android -->
