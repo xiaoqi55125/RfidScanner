@@ -59,12 +59,15 @@ public class RfidScanner extends CordovaPlugin {
         //     return false;
         // }  
         if ("greet".equals(action)) {
-            cordova.getThreadPool().execute(new Runnable() {
+            Runnable runnable = new Runnable() {
                 public void run() {
+                    Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123", Toast.LENGTH_SHORT);
+                    toast.show();
                     String message = "1111111112";
-                    callbackContext.success(message); // Thread-safe.
+                    callbackContext.success(message);
                 }
-            });
+            };
+            cordova.getActivity().runOnUiThread(runnable);
             return true;
         }
         return false;
