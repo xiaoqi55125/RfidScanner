@@ -15,7 +15,6 @@ import org.json.JSONObject;
 import java.util.List;
 import android.widget.Toast;
 import java.util.ArrayList;
-import android.util.Log;
 import org.apache.cordova.PluginResult;
 
 /**
@@ -69,7 +68,7 @@ public class RfidScanner extends CordovaPlugin {
                         toast.show();
                         uhfReader = UhfReader.getInstance();
                     } catch (Exception e) {
-                        Log.i("###",e)
+                        Log.i("###",e.getMessage())
                     }
                     // String message = "1111111112";
                     // callbackContext.success(message);
