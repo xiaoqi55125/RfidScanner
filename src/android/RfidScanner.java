@@ -52,10 +52,8 @@ public class RfidScanner extends CordovaPlugin {
                     String message = "1111111112"+epcStr;
                     callbackContext.success(message);
                 }
-                return true;
-
             });
-                return true;
+            return true;
             }
         }else {
             return false;
