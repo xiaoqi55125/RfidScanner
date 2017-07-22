@@ -67,6 +67,7 @@ public class RfidScanner extends CordovaPlugin {
                      try {
                        Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123", Toast.LENGTH_SHORT);
                         toast.show();
+                        uhfReader = UhfReader.getInstance();
                     } catch (Exception e) {
                         Log.i("###",e)
                     }
