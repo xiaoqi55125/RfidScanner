@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.util.List;
 import android.widget.Toast;
 import java.util.ArrayList;
+import android.util.Log;
 import org.apache.cordova.PluginResult;
 
 /**
@@ -61,8 +62,14 @@ public class RfidScanner extends CordovaPlugin {
         if ("greet".equals(action)) {
             Runnable runnable = new Runnable() {
                 public void run() {
-                    Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123", Toast.LENGTH_SHORT);
-                    toast.show();
+                     startFlag = true;
+                    
+                     try {
+                       Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123", Toast.LENGTH_SHORT);
+                        toast.show();
+                    } catch (Exception e) {
+                        Log.i("###",e)
+                    }
                     // String message = "1111111112";
                     // callbackContext.success(message);
                 }
