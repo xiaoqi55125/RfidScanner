@@ -61,7 +61,21 @@ public class RfidScanner extends CordovaPlugin {
         if ("greet".equals(action)) {
             Runnable runnable = new Runnable() {
                 public void run() {
-                    Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123", Toast.LENGTH_SHORT);
+                    tartFlag = true;
+                    uhfReader = UhfReader.getInstance();
+                    epcList = uhfReader.inventoryRealTime(); //实时盘存
+                    if (epcList != null && !epcList.isEmpty()) {
+                        //扫描到后立即关闭连接,防止多次beep
+                        if (uhfReader != null) {
+                            uhfReader.close();
+                        } 
+                        for (byte[] epc : epcList) {
+                            epcStr = Tools.Bytes2HexString(epc, epc.length);
+                        }
+                        // String message = "1111111112"+epcStr;
+                        // callbackContext.success(message);
+                    }
+                    Toast toast = Toast.makeText(cordova.getActivity().getApplicationContext(), "123"+epcStr, Toast.LENGTH_SHORT);
                     toast.show();
                     // String message = "1111111112";
                     // callbackContext.success(message);
