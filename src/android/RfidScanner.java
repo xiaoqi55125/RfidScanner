@@ -7,8 +7,8 @@ import android.util.Log;
 import com.android.hdhe.uhf.reader.Tools;
 import com.android.hdhe.uhf.reader.UhfReader;
 
-import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.*;
+// import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -81,7 +81,6 @@ public class RfidScanner extends CordovaPlugin {
         //     return false;
 
         // }
-        return true;
     }
 
  
