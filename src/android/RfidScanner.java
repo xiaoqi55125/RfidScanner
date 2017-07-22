@@ -35,29 +35,39 @@ public class RfidScanner extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("greet")) {
+        // if (action.equals("greet")) {
+        //     cordova.getThreadPool().execute(new Runnable() {
+        //         public void run() {
+        //             startFlag = true;
+        //             uhfReader = UhfReader.getInstance();
+        //             epcList = uhfReader.inventoryRealTime(); //实时盘存
+        //             if (epcList != null && !epcList.isEmpty()) {
+        //                 //扫描到后立即关闭连接,防止多次beep
+        //                 if (uhfReader != null) {
+        //                     uhfReader.close();
+        //                 } 
+        //                 for (byte[] epc : epcList) {
+        //                     epcStr = Tools.Bytes2HexString(epc, epc.length);
+        //                 }
+        //                 String message = "1111111112"+epcStr;
+        //                 callbackContext.success(message);
+        //             }
+        //         });
+        //         return true;
+        //     }
+        // }else {
+        //     return false;
+        // }  
+        if ("greet".equals(action)) {
             cordova.getThreadPool().execute(new Runnable() {
-            public void run() {
-                startFlag = true;
-                uhfReader = UhfReader.getInstance();
-                epcList = uhfReader.inventoryRealTime(); //实时盘存
-                if (epcList != null && !epcList.isEmpty()) {
-                    //扫描到后立即关闭连接,防止多次beep
-                    if (uhfReader != null) {
-                        uhfReader.close();
-                    } 
-                    for (byte[] epc : epcList) {
-                        epcStr = Tools.Bytes2HexString(epc, epc.length);
-                    }
-                    String message = "1111111112"+epcStr;
-                    callbackContext.success(message);
+                public void run() {
+                    String message = "1111111112";
+                    callbackContext.success(message); // Thread-safe.
                 }
             });
             return true;
-            }
-        }else {
-            return false;
-        }  
+        }
+        return false;
         //  if (action.equals("greet")) {
 
         //     String name = data.getString(0);
