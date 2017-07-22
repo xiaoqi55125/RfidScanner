@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import java.util.List;
 import android.widget.Toast;
 import java.util.ArrayList;
-import org.apache.cordova.api.PluginResult;
+import org.apache.cordova.PluginResult;
 
 /**
  * Created by avila on 28/10/13.
