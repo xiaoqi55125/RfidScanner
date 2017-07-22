@@ -33,9 +33,8 @@ public class RfidScanner extends CordovaPlugin {
 
         if (action.equals("greet")) {
 
-            String jniString = HelloJni.stringFromJNI();
             String name = data.getString(0);
-            String message = "Hello, " + name + ". JNI says: " + jniString;
+            String message = "Hello, " + name ;
             callbackContext.success(message);
 
             return true;
