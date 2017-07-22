@@ -43,13 +43,11 @@ public class RfidScanner extends CordovaPlugin {
                 //扫描到后立即关闭连接,防止多次beep
                 if (uhfReader != null) {
                     uhfReader.close();
-                }
+                } 
                 for (byte[] epc : epcList) {
                     epcStr = Tools.Bytes2HexString(epc, epc.length);
                 }
-                // Intent calIntent = new Intent(Intent.ACTION_EDIT)
-                //         .putExtra("tfidid", epcStr);
-                // this.cordova.getActivity().startActivity(calIntent);
+
 
                 callbackContext.success();
                 String message = "1111111112"+epcStr;
@@ -58,9 +56,7 @@ public class RfidScanner extends CordovaPlugin {
                 return true;
             }
         }else {
-            
             return false;
-
         }  
         //  if (action.equals("greet")) {
 
@@ -75,7 +71,7 @@ public class RfidScanner extends CordovaPlugin {
         //     return false;
 
         // }
-        // return true;
+        return true;
     }
 
  
