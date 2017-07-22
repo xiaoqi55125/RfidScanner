@@ -35,7 +35,7 @@ public class RfidScanner extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("scan")) {
+        if (action.equals("greet")) {
             // startFlag = true;
             // uhfReader = UhfReader.getInstance();
             // epcList = uhfReader.inventoryRealTime(); //实时盘存
@@ -70,20 +70,20 @@ public class RfidScanner extends CordovaPlugin {
             return false;
 
         }  
-         if (action.equals("greet")) {
+        //  if (action.equals("greet")) {
 
-            String name = data.getString(0);
-            String message = "Hello, " + name ;
-            callbackContext.success(message);
+        //     String name = data.getString(0);
+        //     String message = "Hello, " + name ;
+        //     callbackContext.success(message);
 
-            return true;
+        //     return true;
 
-        } else {
+        // } else {
             
-            return false;
+        //     return false;
 
-        }
-        return true;
+        // }
+        // return true;
     }
 
  
