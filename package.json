@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "rfid",
   "cordova": {
-    "id": "RfidScanner",
+    "id": "com.pigwell.cordova.plugin.rfidscanner",
     "platforms": [
       "android" 
     ]
