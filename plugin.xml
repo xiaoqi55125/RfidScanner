@@ -26,5 +26,6 @@
 
         <source-file src="src/android/RfidScanner.java" target-dir="src/com/pigwell/cordova/plugin" />  
         <source-file src="src/android/uhf.jar" target-dir="libs" />    
+        <source-file src="src/android/armeabi.jar" target-dir="libs" />   
      </platform>          
 </plugin>
