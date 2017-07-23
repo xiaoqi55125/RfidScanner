@@ -13,7 +13,7 @@
     "url": "https://github.com/xiaoqi55125/RfidScanner"
   },
   "keywords": [
-    "cordova",
+    "cordova"
   ],
   "engines": [{
     "name": "cordova-android",
