@@ -1,0 +1,28 @@
+{
+  "name": "RfidScanner",
+  "version": "0.1.0",
+  "description": "rfid",
+  "cordova": {
+    "id": "RfidScanner",
+    "platforms": [
+      "android" 
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiaoqi55125/RfidScanner"
+  },
+  "keywords": [
+    "cordova",
+  ],
+  "engines": [{
+    "name": "cordova-android",
+    "version": ">=4"
+  }, {
+    "name": "cordova-plugman",
+    "version": ">=4.2.0"
+  }],
+  "author": "zhicheng",
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/xiaoqi55125/RfidScanner"
+}
